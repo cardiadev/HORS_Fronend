@@ -1,5 +1,6 @@
-<h1 align="center">Welcome to HORS - Hotel Online Reservation System - Frontend 👋</h1>
-<p>
+<h1 align="center">Welcome to HORS | Frontend 👋</h1>
+<h2 align="center">Hotel Online Reservation System</h2>
+<p align="center">
   <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000" />
   <a href="#" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
@@ -51,8 +52,8 @@ Give a ⭐️ if this project helped you!
 
 ## 📝 License
 
-Copyright © 2022 [Carlos Diaz <carlosdiaz.dev@gmail.com>](https://github.com/cardiadev).<br />
-This project is [MIT](LICENSE.md) licensed.
+Copyright © 2022 [Carlos Diaz](https://github.com/cardiadev).<br />
+This project is [MIT](https://github.com/cardiadev/HORS_Fronend/blob/main/LICENSE) licensed.
 
 ***
 _This README was generated with ❤️ by [Carlos Diaz](https://twitter.com/cardiadev)_
