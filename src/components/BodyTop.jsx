@@ -6,11 +6,13 @@ import HotelVideo from "./HotelVideo";
 const BodyTop = () => {
   return (
     <Box
-      sx={{ backgroundColor: "#f9f9f9" ,
-      marginTop: {xs: "0px", md: "-80px"},
-      padding: {xs: "0px", md: "110px 0px"},
-    }}
-    >      <CountersHome />
+      sx={{
+        backgroundColor: "#f9f9f9",
+        marginTop: { xs: "0px", md: "-80px" },
+        padding: { xs: "0px", md: "110px 0px" },
+      }}
+    >
+      <CountersHome />
       <HotelVideo />
     </Box>
   );

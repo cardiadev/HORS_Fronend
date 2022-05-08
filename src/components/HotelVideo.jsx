@@ -83,8 +83,8 @@ const HotelVideo = () => {
             <Grid item xs={12} md={3}></Grid>
           </Grid>
 
-          <Grid item xs={12} md={3}></Grid>
-          <Grid item xs={12} md={6} align="center">
+          <Grid item xs={12} md={2}></Grid>
+          <Grid item xs={12} md={8} align="center">
             <Box
               sx={{
                 position: "relative",
@@ -122,7 +122,7 @@ const HotelVideo = () => {
               />
             </Box>
           </Grid>
-          <Grid item xs={12} md={3}></Grid>
+          <Grid item xs={12} md={2}></Grid>
         </Grid>
       </Box>
   );

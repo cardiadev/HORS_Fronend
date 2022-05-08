@@ -1,14 +1,11 @@
 import React from "react";
-import { Banner } from "../components/Banner";
-import Menu from "../components/Menu";
-import { ReservationForm } from "../components/ReservationForm";
-
-// eslint-disable-next-line
-import "swiper/css/bundle";
-import "../components/styles.css";
-import BodyTop from "../components/BodyTop";
 import { Box, Grid } from "@mui/material";
+import Menu from "../components/Menu";
+import { Banner } from "../components/Banner";
+import { ReservationForm } from "../components/ReservationForm";
+import BodyTop from "../components/BodyTop";
 import Footer from "../components/Footer";
+
 
 const Homepage = () => {
   return (

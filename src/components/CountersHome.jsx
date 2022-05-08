@@ -12,7 +12,7 @@ const CountersHome = () => {
         xs={12}
         md={3}
         align="center"
-        sx={{ margin: { xs: "50px 0", md: "0px" } }}
+        sx={{ margin: { xs: "25px 0", md: "0px" } }}
       >
         <Typography variant="h3" sx={{ fontWeight: "500", color: "#0f97aa" }}>
           <CountUp end={20} />+
@@ -34,7 +34,7 @@ const CountersHome = () => {
         xs={12}
         md={3}
         align="center"
-        sx={{ margin: { xs: "50px 0", md: "0px" } }}
+        sx={{ margin: { xs: "25px 0", md: "0px" } }}
       >
         <Typography variant="h3" sx={{ fontWeight: "500", color: "#0f97aa" }}>
           <CountUp end={150} />+
@@ -56,7 +56,7 @@ const CountersHome = () => {
         xs={12}
         md={3}
         align="center"
-        sx={{ margin: { xs: "50px 0", md: "0px" } }}
+        sx={{ margin: { xs: "25px 0", md: "0px" } }}
       >
         <Typography variant="h3" sx={{ fontWeight: "500", color: "#0f97aa" }}>
           <CountUp end={5} />+

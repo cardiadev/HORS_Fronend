@@ -47,7 +47,7 @@ export const theme = createTheme({
       hoverOpacity: 0.7,
       focus: red[600],
       focusOpacity: 1,
-      selected: red[300],
+      selected: '#f9f9f9',
       selectedOpacity: 1,
     },
     common: {
