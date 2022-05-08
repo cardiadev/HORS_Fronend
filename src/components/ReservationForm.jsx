@@ -6,6 +6,7 @@ import {
   Grid,
   Popover,
   Button,
+  styled,
 } from "@mui/material";
 
 // Date Picker
@@ -15,6 +16,23 @@ import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 
 import "./styles.css";
+
+
+
+
+const GuestsBox = styled(TextField)(() => ({
+  '& input': {
+    textAlign: 'center',
+  },
+  '& fieldset': {
+    borderRadius: 0,
+  },
+
+}));
+
+
+
+
 
 export const ReservationForm = () => {
   //
@@ -27,7 +45,6 @@ export const ReservationForm = () => {
     },
   ]);
 
-
   // Popover MUI
   const [anchorEl, setAnchorEl] = useState(null);
   const handleClick = (event) => {
@@ -38,9 +55,6 @@ export const ReservationForm = () => {
   };
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
-
-
-
 
   // Guests Count
   const [contador, setContador] = useState(0);
@@ -62,26 +76,27 @@ export const ReservationForm = () => {
     }
   };
 
-
-
   return (
     <>
       <Container fixed>
         <Box
           sx={{
             backgroundColor: "white",
-            borderRadius: "10px",
-            border: "1px solid #CACACA80",
-            position: "absolute",
-            zIndex: "1",
-            margin: "-50px 0 0 0",
-            left: "19%",
-            width: "60%",
-            padding: "25px",
+            borderRadius: { xs: "none", md: "10px" },
+            border: { xs: "none", md: "1px solid #e0e0e0" },
+            position: { xs: "none", md: "absolute" },
+            zIndex: { xs: "none", md: "1" },
+            margin: { xs: "none", md: "-50px 0 0 0" },
+            left: { xs: "none", md: "19%" },
+            width: { xs: "none", md: "60%" },
+            padding: { xs: "none", md: "22px" },
+            paddingTop: { xs: "50px", },
+            paddingBottom: { xs: "0px",},
+            
           }}
         >
           <Grid container spacing={2}>
-            <Grid item xs={3}>
+            <Grid item xs={12} md={3}>
               <TextField
                 fullWidth
                 size="large"
@@ -92,7 +107,7 @@ export const ReservationForm = () => {
                 onClick={handleClick}
                 InputProps={{
                   readOnly: true,
-              /* inputProps: {
+                  /* inputProps: {
                     style: { textAlign: "center" },
                   }, */
                 }}
@@ -119,7 +134,7 @@ export const ReservationForm = () => {
                 />
               </Popover>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={12} md={3}>
               <TextField
                 fullWidth
                 label="CheckOut Date"
@@ -129,7 +144,7 @@ export const ReservationForm = () => {
                 onClick={handleClick}
                 InputProps={{
                   readOnly: true,
-              /* inputProps: {
+                  /* inputProps: {
                     style: { textAlign: "center" },
                   }, */
                 }}
@@ -147,27 +162,29 @@ export const ReservationForm = () => {
               </div>
             </Box> */}
 
-            <Grid item xs={3}>
+            <Grid item xs={12} md={3}>
               <Box display="flex" flexDirection="row" alignItems="stretch">
                 <Button
                   size="large"
                   variant="contained"
                   disableElevation
-                  sx={{ height: "55px" }}
+                  sx={{
+                    height: "55px",
+                    borderTopRightRadius: "0px",
+                    borderBottomRightRadius: "0px",
+                  }}
                   onClick={handleContadorNegative}
                 >
                   -
                 </Button>
-                <TextField
+                <GuestsBox
+                  fullWidth
                   variant="outlined"
                   placeholder="0"
                   label="Guests"
                   value={contador}
                   InputProps={{
                     readOnly: true,
-                    inputProps: {
-                      style: { textAlign: "center" },
-                    },
                   }}
                   onChange={(e) => setContador(e.target.value)}
                 />
@@ -175,7 +192,8 @@ export const ReservationForm = () => {
                   size="large"
                   variant="contained"
                   disableElevation
-                  sx={{ height: "55px" }}
+                  sx={{ height: "55px"
+                  , borderTopLeftRadius: "0px", borderBottomLeftRadius: "0px" }}
                   onClick={handleContadorPositive}
                 >
                   +

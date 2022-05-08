@@ -1,6 +1,7 @@
 import { React, useState } from "react";
-import { Grid, Box, Typography } from "@mui/material";
-import ReactPlayer from "react-player/vimeo";
+import { Grid, Box, Typography, styled } from "@mui/material";
+import ReactPlayer from "react-player/lazy";
+import { FaPlay } from "react-icons/fa";
 
 const HotelVideo = () => {
   const [video, setVideo] = useState(true);
@@ -9,8 +10,27 @@ const HotelVideo = () => {
     setVideo(!video);
   };
 
+  const PlayButton = styled(Box)(({ theme }) => ({
+    visibility: video ? "visible" : "hidden",
+    position: "absolute",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "58px",
+    height: "58px",
+    backgroundColor: "rgba(0,0,0,.5)",
+    borderRadius: "50%",
+    zIndex: "3",
+    cursor: "pointer",
+    top: "46%",
+    left: "46%",
+    "&:hover": {
+      backgroundColor: "#0f97aa",
+      transition: "all .3s ease",
+    },
+  }));
+
   return (
-    <>
       <Box
         sx={{
           backgroundColor: "rgba(15, 151, 170, .06)",
@@ -65,7 +85,16 @@ const HotelVideo = () => {
 
           <Grid item xs={12} md={3}></Grid>
           <Grid item xs={12} md={6} align="center">
-            <Box sx={{ position: "relative", paddingTop: "56.25%" }}>
+            <Box
+              sx={{
+                position: "relative",
+                paddingTop: "56.25%",
+              }}
+            >
+              <PlayButton onClick={handleVideo}>
+                <FaPlay size={20} style={{ color: "#fff" }} />
+              </PlayButton>
+
               <img
                 src="https://res.cloudinary.com/cardiadev/image/upload/v1651897979/hors/general/overlay-video_amqx5q.jpg"
                 alt=""
@@ -75,15 +104,14 @@ const HotelVideo = () => {
                   left: "0",
                   width: "100%",
                   zIndex: "1",
-                  cursor: "pointer",
                   display: video ? "block" : "none",
                 }}
-                onClick={handleVideo}
               />
 
               <ReactPlayer
                 className="react-player"
                 url="https://vimeo.com/512885700"
+                playing={false}
                 width="100%"
                 height="100%"
                 style={{
@@ -97,7 +125,6 @@ const HotelVideo = () => {
           <Grid item xs={12} md={3}></Grid>
         </Grid>
       </Box>
-    </>
   );
 };
 

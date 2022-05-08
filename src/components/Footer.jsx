@@ -11,7 +11,13 @@ import {
   Button,
 } from "@mui/material";
 import Logo from "../assets/logo_footer.svg";
-import { FaFacebook, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaTwitter,
+  FaInstagram,
+  FaYoutube,
+  FaHeart,
+} from "react-icons/fa";
 
 //useStyles
 const TitleStyled = styled(Typography)(({ theme }) => ({
@@ -104,7 +110,16 @@ const Footer = () => {
             {/* First Column - End */}
 
             {/* Second Column - Start */}
-            <Grid container item xs={12} md={4} lg={4}>
+            <Grid
+              container
+              item
+              xs={12}
+              md={4}
+              lg={4}
+              sx={{
+                marginTop: { xs: "3rem", md: "0" },
+              }}
+            >
               <Grid container item spacing={2} xs={12}>
                 <Grid item xs={12}>
                   <TitleStyled variant="h6">Useful Links</TitleStyled>
@@ -135,7 +150,11 @@ const Footer = () => {
             {/* Second Column - End */}
 
             {/* Third Column - Start */}
-            <Grid container item xs={12} md={4} lg={4}>
+            <Grid container item xs={12} md={4} lg={4}
+            sx={{
+              marginTop: { xs: "3rem", md: "0" },
+            }}
+              >
               <Grid container item spacing={2} xs={12}>
                 <Grid item xs={12}>
                   <TitleStyled variant="h6">Stay in Touch</TitleStyled>
@@ -176,7 +195,9 @@ const Footer = () => {
                   />
                 </Grid>
                 <Grid item xs={12} md={10}>
-                  <Box sx={{ display: "flex", justifyContent: "space-around" }}>
+                  <Box sx={{ display: "flex", justifyContent: "space-around",
+                  marginTop: { xs: "3rem", md: "0" },
+                 }}>
                     <FaFacebook size={30} />
                     <FaTwitter size={30} />
                     <FaInstagram size={30} />
@@ -202,7 +223,20 @@ const Footer = () => {
             >
               <Typography variant="body2">
                 <span>
-                  © 2007 - {new Date().getFullYear()} Grand Velas - Mexico
+                  © 2007 - {new Date().getFullYear()} | Grand Velas - Mexico |
+                  Made with <FaHeart size={12} style={{ color: "red" }} /> by{" "}
+                  <Link
+                    href="https://github.com/cardiadev"
+                    target="_blank"
+                    style={{
+                      color: "#fff",
+                      underline: "none",
+                      textDecoration: "none",
+                      fontWeight: "600",
+                    }}
+                  >
+                    Carlos Diaz
+                  </Link>
                 </span>
               </Typography>
             </Box>

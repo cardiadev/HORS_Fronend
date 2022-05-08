@@ -1,9 +1,8 @@
 import * as React from "react";
-import { Box, Grid, Button, Stack } from "@mui/material";
+import { Box, Grid, Button, Stack, styled } from "@mui/material";
 import Logo from "../assets/logo_header.svg";
-import { styled } from "@mui/system";
 
-const MenuLink = styled("a")({
+const asfasfasf = styled("a")({
   fontFamily: "Barlow, sans-serif",
   fontWeight: "500",
   color: "#666",
@@ -13,6 +12,31 @@ const MenuLink = styled("a")({
     borderBottom: "2px solid #0f97aa",
   },
 });
+
+const MenuLink = styled("a")(({ theme }) => ({
+  fontWeight: "400",
+  color: "#666",
+  position: "relative",
+  textDecoration: "none",
+  "&:before": {
+    content: '""',
+    position: "absolute",
+    display: "block",
+    width: "100%",
+    height: "2px",
+    bottom: "-8px",
+    left: 0,
+    backgroundColor: "#0f97aa",
+    transform: "scaleX(0)",
+    transformOrigin: "top left",
+    transition: "transform 0.25s ease",
+  },
+  "&:hover": {
+    "&:before": {
+      transform: "scaleX(1)",
+    },
+  },
+}));
 
 const Menu = () => {
   return (
