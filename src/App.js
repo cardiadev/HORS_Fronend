@@ -1,9 +1,15 @@
-import './App.css';
-import Homepage from './pages/Homepage';
+import { ThemeProvider  } from '@mui/material';
+import { theme } from './theme';
+
+import Homepage from "./pages/Homepage";
+
+
 
 function App() {
   return (
-    <Homepage></Homepage>
+    <ThemeProvider theme={theme}>
+      <Homepage />
+    </ThemeProvider>
   );
 }
 
