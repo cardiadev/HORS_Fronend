@@ -207,6 +207,7 @@ export const ReservationForm = () => {
                 variant="contained"
                 color="primary"
                 sx={{ height: "55px" }}
+                href="/rooms"
               >
                 Search
               </Button>

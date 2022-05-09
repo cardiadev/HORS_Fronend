@@ -108,11 +108,12 @@ const Menu = () => {
               variant="contained"
               size="large"
               color="primary"
+              href="/login"
               onClick={() => {
                 console.log("Clicked");
               }}
             >
-              Reservation
+              Login
             </Button>
           </Grid>
         </Grid>

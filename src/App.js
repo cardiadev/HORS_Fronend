@@ -5,6 +5,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import Rooms from "./pages/Rooms";
 import JuniorSuite from "./pages/JuniorSuite";
+import Login from "./pages/Login";
+
 
 // import "swiper/css/bundle";
 // import "./components/styles.css";
@@ -15,6 +17,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Homepage />} />
+          <Route path="login" element={<Login />} />
           <Route path="rooms" element={<Rooms />} />
           <Route path="rooms/juniorsuite" element={<JuniorSuite />} />
         </Routes>
