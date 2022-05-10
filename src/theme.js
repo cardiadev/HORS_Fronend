@@ -38,18 +38,6 @@ export const theme = createTheme({
       secondary: grey[700],
       disabled: grey[500],
     },
-    action: {
-      active: red[200],
-      activeOpacity: 1,
-      disabled: grey[700],
-      disabledBackground: grey[200],
-      hover: red[100],
-      hoverOpacity: 0.7,
-      focus: red[600],
-      focusOpacity: 1,
-      selected: '#f9f9f9',
-      selectedOpacity: 1,
-    },
     common: {
       black: grey[900],
       white: grey[200],

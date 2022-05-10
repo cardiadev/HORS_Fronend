@@ -5,6 +5,7 @@ import Footer from '../components/Footer'
 import HeaderBanner from '../components/HeaderBanner'
 import Menu from '../components/Menu'
 import Checkout from '../components/payment/Checkout'
+import { CreditCard } from '../components/payment/CreditCard'
 
 const Payment = () => {
   return (
@@ -22,7 +23,8 @@ const Payment = () => {
       >
         <Grid item xs={12} md={12}>
             
-            <Checkout/>
+            {/* <Checkout/> */}
+            <CreditCard/>
 
             </Grid>
 

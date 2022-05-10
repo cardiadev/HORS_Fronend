@@ -39,7 +39,7 @@ const payments = [
 
 export default function Review() {
   return (
-    <React.Fragment>
+    <>
       <Typography variant="h6" gutterBottom>
         Order summary
       </Typography>
@@ -71,6 +71,8 @@ export default function Review() {
             Payment details
           </Typography>
           <Grid container>
+            
+            
             {payments.map((payment) => (
               <React.Fragment key={payment.name}>
                 <Grid item xs={6}>
@@ -81,9 +83,11 @@ export default function Review() {
                 </Grid>
               </React.Fragment>
             ))}
+
+
           </Grid>
         </Grid>
       </Grid>
-    </React.Fragment>
+    </>
   );
 }

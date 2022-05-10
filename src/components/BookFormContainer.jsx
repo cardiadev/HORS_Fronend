@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Box, Grid, Tabs, Tab } from "@mui/material";
 import TabPanel from './common/tab-panel/TabPanel'
 import BookingForm from "./BookingForm";
+import Checkout from "./payment/Checkout";
 
 
 const BookFormContainer = () => {
@@ -60,7 +61,7 @@ const BookFormContainer = () => {
                 
       </TabPanel>
           <TabPanel value={value} index={1}>
-                <h2>Request Information for book a room</h2>
+                <Checkout/>
       </TabPanel>
           
           

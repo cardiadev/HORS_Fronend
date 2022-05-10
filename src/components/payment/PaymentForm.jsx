@@ -1,65 +1,204 @@
-import * as React from 'react';
-import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
+import * as React from "react";
+import { useState } from "react";
+import {
+  Grid,
+  Box,
+  TextField,
+  FormControlLabel,
+  Checkbox,
+  Typography,
+  Button,
+} from "@mui/material";
+import Card from "react-credit-cards";
+
+import {
+  formatCreditCardNumber,
+  formatCVC,
+  formatExpirationDate,
+  formatFormData,
+} from "./utils";
+
+import "react-credit-cards/es/styles-compiled.css";
 
 export default function PaymentForm() {
+  const [cardData, setCardData] = useState({
+    number: "",
+    name: "",
+    expiry: "",
+    cvc: "",
+    issuer: "",
+    focused: "",
+    formData: null,
+  });
+
+  const handleCallback = ({ issuer }, isValid) => {
+    if (isValid) {
+      setCardData({
+        ...cardData,
+        issuer,
+      });
+    }
+  };
+
+  const handleInputFocus = ({ target }) => {
+    setCardData({
+      ...cardData,
+      focused: target.name,
+    });
+  };
+
+  const handleInputChange = ({ target }) => {
+    if (target.name === "number") {
+      target.value = formatCreditCardNumber(target.value);
+    } else if (target.name === "expiry") {
+      target.value = formatExpirationDate(target.value);
+    } else if (target.name === "cvc") {
+      target.value = formatCVC(target.value);
+    }
+    setCardData({
+      ...cardData,
+      [target.name]: target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { issuer } = cardData;
+    const formData = [...e.target.elements]
+      .filter((d) => d.name)
+      .reduce((acc, d) => {
+        acc[d.name] = d.value;
+        return acc;
+      }, {});
+    setCardData({
+      ...cardData,
+      formData,
+    });
+    // reset form data after submit
+    // setCardData({
+    //     ...cardData,
+    //     number: "",
+    //     name: "",
+    //     expiry: "",
+    //     cvc: "",
+    //     issuer: "",
+    //     focused: "",
+    //     formData: null,
+    //     });
+  };
+
+  const { name, number, expiry, cvc, focused, issuer, formData } = cardData;
+
   return (
-    <React.Fragment>
+    <Box>
       <Typography variant="h6" gutterBottom>
         Payment method
       </Typography>
+
       <Grid container spacing={3}>
-        <Grid item xs={12} md={6}>
-          <TextField
-            required
-            id="cardName"
-            label="Name on card"
+        <Grid
+          item
+          xs={12}
+          md={12}
+          sx={{
+            mt: 4,
+          }}
+        >
+          <Card
+            number={number}
+            name={name}
+            expiry={expiry}
+            cvc={cvc}
+            focused={focused}
+            callback={handleCallback}
+          />
+        </Grid>
+
+        <Grid item xs={12} md={12}>
+          <Box component="form" onSubmit={handleSubmit}>
+            <Grid container spacing={3}>
+              <Grid item xs={12} md={12}>
+                <TextField
+                  fullWidth
+                  type="tel"
+                  name="number"
+                  placeholder="Card Number"
+                  pattern="[\d| ]{16,22}"
+                  required
+                  value={number}
+                  onChange={handleInputChange}
+                  onFocus={handleInputFocus}
+                />
+              </Grid>
+
+
+            <Grid item xs={12} md={12}>
+              <TextField
+                fullWidth
+                type="text"
+                name="name"
+                placeholder="Name"
+                required
+                value={name}
+                onChange={handleInputChange}
+                onFocus={handleInputFocus}
+              ></TextField>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <TextField
+                fullWidth
+                type="tel"
+                name="expiry"
+                placeholder="Valid Thru"
+                pattern="\d\d/\d\d"
+                required
+                value={expiry}
+                onChange={handleInputChange}
+                onFocus={handleInputFocus}
+              ></TextField>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <TextField
+                fullWidth
+                type="tel"
+                name="cvc"
+                placeholder="CVC"
+                pattern="\d{3,4}"
+                required
+                value={cvc}
+                onChange={handleInputChange}
+                onFocus={handleInputFocus}
+              ></TextField>
+              <input type="hidden" name="issuer" value={issuer} />
+            </Grid>
+            <Grid item xs={12} md={12}
+            align="center"
+            >
+            <Button
             fullWidth
-            autoComplete="cc-name"
-            variant="standard"
-          />
+              type="submit"
+              variant="contained"
+              color="primary"
+              style={{
+                height: "50px",
+              }}
+            >
+              Validate Credit Card
+            </Button>
+              </Grid>
+            </Grid>
+
+          </Box>
         </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField
-            required
-            id="cardNumber"
-            label="Card number"
-            fullWidth
-            autoComplete="cc-number"
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField
-            required
-            id="expDate"
-            label="Expiry date"
-            fullWidth
-            autoComplete="cc-exp"
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField
-            required
-            id="cvv"
-            label="CVV"
-            helperText="Last three digits on signature strip"
-            fullWidth
-            autoComplete="cc-csc"
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <FormControlLabel
-            control={<Checkbox color="secondary" name="saveCard" value="yes" />}
-            label="Remember credit card details for next time"
-          />
-        </Grid>
+
+        {formData && (
+          <div>
+            {formatFormData(formData).map((d, i) => (
+              <div key={i}>{d}</div>
+            ))}
+          </div>
+        )}
       </Grid>
-    </React.Fragment>
+    </Box>
   );
 }
