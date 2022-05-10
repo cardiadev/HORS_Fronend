@@ -50,7 +50,11 @@ const Menu = () => {
       >
         <Grid container item xs={12} sm={12} md={12} lg={9}>
           <Grid item xs={2} align="center">
-            <img src={Logo} alt="logo" />
+            <a
+              href="/"
+            >
+              <img src={Logo} alt="logo" />
+            </a>
           </Grid>
           <Grid item xs={8} align="center" mt={1}>
             <MenuLink

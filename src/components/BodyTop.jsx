@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Grid } from "@mui/material";
 import CountersHome from "./CountersHome";
 import HotelVideo from "./HotelVideo";
+import TextParallax from "./TextParallax";
 
 const BodyTop = () => {
   return (
@@ -14,6 +15,7 @@ const BodyTop = () => {
     >
       <CountersHome />
       <HotelVideo />
+      <TextParallax/>
     </Box>
   );
 };

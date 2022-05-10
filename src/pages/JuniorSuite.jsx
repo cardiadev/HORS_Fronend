@@ -7,6 +7,7 @@ import HeaderBanner from "../components/HeaderBanner";
 import RoomGallery from "../components/RoomGallery";
 import RoomSearch from "../components/RoomSearch";
 import RoomInfo from "../components/RoomInfo";
+import Amenities from "../components/Amenities";
 import BookFormContainer from "../components/BookFormContainer";
 
 const JuniorSuite = () => {
@@ -30,6 +31,7 @@ const JuniorSuite = () => {
       >
         <Grid item xs={12} md={6}>
           <RoomInfo />
+          <Amenities />
         </Grid>
         <Grid item xs={12} md={6}>
           <BookFormContainer />

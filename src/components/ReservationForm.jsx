@@ -140,7 +140,7 @@ export const ReservationForm = () => {
                 label="CheckOut Date"
                 id="outlined-basic"
                 variant="outlined"
-                value={`${format(date[0].endDate, "dd/MM/yyyy")}`}
+                value={`${format(date[0].endDate, "dd / MMMM / yyyy")}`}
                 onClick={handleClick}
                 InputProps={{
                   readOnly: true,

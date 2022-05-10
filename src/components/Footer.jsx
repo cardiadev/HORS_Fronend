@@ -150,11 +150,16 @@ const Footer = () => {
             {/* Second Column - End */}
 
             {/* Third Column - Start */}
-            <Grid container item xs={12} md={4} lg={4}
-            sx={{
-              marginTop: { xs: "3rem", md: "0" },
-            }}
-              >
+            <Grid
+              container
+              item
+              xs={12}
+              md={4}
+              lg={4}
+              sx={{
+                marginTop: { xs: "3rem", md: "0" },
+              }}
+            >
               <Grid container item spacing={2} xs={12}>
                 <Grid item xs={12}>
                   <TitleStyled variant="h6">Stay in Touch</TitleStyled>
@@ -194,14 +199,26 @@ const Footer = () => {
                     }}
                   />
                 </Grid>
-                <Grid item xs={12} md={10}>
-                  <Box sx={{ display: "flex", justifyContent: "space-around",
-                  marginTop: { xs: "3rem", md: "0" },
-                 }}>
-                    <FaFacebook size={30} />
-                    <FaTwitter size={30} />
-                    <FaInstagram size={30} />
-                    <FaYoutube size={30} />
+                <Grid item xs={12} md={12}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "space-around",
+                      marginTop: { xs: "3rem", md: "0" },
+                    }}
+                  >
+                    <LinkStyled href="https://www.facebook.com/">
+                      <FaFacebook size={30} />
+                    </LinkStyled>
+                    <LinkStyled href="https://www.twitter.com/">
+                      <FaTwitter size={30} />
+                    </LinkStyled>
+                    <LinkStyled href="https://www.instagram.com/">
+                      <FaInstagram size={30} />
+                    </LinkStyled>
+                    <LinkStyled href="https://www.yputube.com/">
+                      <FaYoutube size={30} />
+                    </LinkStyled>
                   </Box>
                 </Grid>
               </Grid>
