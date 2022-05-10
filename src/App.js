@@ -6,7 +6,8 @@ import Homepage from "./pages/Homepage";
 import Rooms from "./pages/Rooms";
 import JuniorSuite from "./pages/JuniorSuite";
 import Login from "./pages/Login";
-import Payment from "./pages/Payment";
+// import Payment from "./pages/Payment";
+import DocuPDF from "./components/DocuPDF";
 
 
 // import "swiper/css/bundle";
@@ -21,7 +22,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="rooms" element={<Rooms />} />
           <Route path="rooms/juniorsuite" element={<JuniorSuite />} />
-          <Route path="payment" element={<Payment />} />
+          <Route path="payment" element={<DocuPDF />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

@@ -1,20 +1,19 @@
 import * as React from "react";
 import { useState } from "react";
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import Stepper from "@mui/material/Stepper";
-import Step from "@mui/material/Step";
-import StepLabel from "@mui/material/StepLabel";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-
+import {
+  Box,
+  Grid,
+  Container,
+  Stepper,
+  Step,
+  StepLabel,
+  Button,
+  Typography,
+} from "@mui/material";
 
 import AddressForm from "./AddressForm";
 import PaymentForm from "./PaymentForm";
 import Review from "./Review";
-
-
-
 
 const steps = ["Shipping address", "Payment details", "Review your order"];
 
@@ -59,37 +58,55 @@ export default function Checkout() {
         <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
           {steps.map((label, index) => (
             <Step key={label}>
-                <StepLabel>{label}</StepLabel>
+              <StepLabel>{label}</StepLabel>
             </Step>
-            ))}
+          ))}
         </Stepper>
         <>
-          {activeStep === steps.length  ? (
-            <>
+          {activeStep === steps.length ? (
+            <Box>
               <Typography variant="h5" gutterBottom>
                 Thank you for your order.
               </Typography>
-              <Typography variant="subtitle1">
-                Your order number is <b>#{makeid(7)}</b>. We have emailed your
-                order confirmation, and will send you an update when your order
-                has shipped.
-              </Typography>
-            </>
+              <Grid container spacing={3}>
+                <Grid item xs={12}>
+                  <Typography variant="subtitle1">
+                    Your order number is <b>#{makeid(7)}</b>. We have emailed
+                    your order confirmation, and will send you an update when
+                    your order has shipped.
+                  </Typography>
+                </Grid>
+                <Grid item xs={12}>
+                  <Button
+                    fullWidth
+                    variant="contained"
+                    color="primary"
+                    sx={{
+                      height: "50px",
+                    }}
+                  >
+                    Print Reservation Receipt
+                  </Button>
+                </Grid>
+              </Grid>
+            </Box>
           ) : (
-            <>
+            <Box>
               {getStepContent(activeStep)}
               <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 2 }}>
                 {activeStep !== 0 && (
                   <Button
-                  fullWidth
-                  variant="outlined"
-                   onClick={handleBack} sx={{ mt: 3, ml: 1, height: "50px" }}>
+                    fullWidth
+                    variant="outlined"
+                    onClick={handleBack}
+                    sx={{ mt: 3, ml: 1, height: "50px" }}
+                  >
                     Back
                   </Button>
                 )}
 
                 <Button
-                fullWidth
+                  fullWidth
                   variant="contained"
                   onClick={handleNext}
                   sx={{ mt: 3, ml: 1, height: "50px" }}
@@ -97,7 +114,7 @@ export default function Checkout() {
                   {activeStep === steps.length - 1 ? "Place order" : "Next"}
                 </Button>
               </Box>
-            </>
+            </Box>
           )}
         </>
       </Container>
