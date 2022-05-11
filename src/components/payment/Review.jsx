@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import Grid from '@mui/material/Grid';
+import {Grid, Box} from '@mui/material';
 
 const products = [
   {
@@ -39,7 +39,7 @@ const payments = [
 
 export default function Review() {
   return (
-    <>
+    <Box>
       <Typography variant="h6" gutterBottom>
         Order summary
       </Typography>
@@ -88,6 +88,6 @@ export default function Review() {
           </Grid>
         </Grid>
       </Grid>
-    </>
+    </Box>
   );
 }
