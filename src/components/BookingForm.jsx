@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Grid,
@@ -18,7 +18,8 @@ import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 
 const BookingForm = () => {
-  //
+
+/* Setting the state of the date picker. */
   const [openDate, setOpenDate] = useState(false);
   const [date, setDate] = useState([
     {
@@ -30,6 +31,9 @@ const BookingForm = () => {
 
   // Popover MUI
   const [anchorEl, setAnchorEl] = useState(null);
+/**
+ * It sets the anchor element to the current target.
+ */
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -40,28 +44,32 @@ const BookingForm = () => {
   const id = open ? "simple-popover" : undefined;
 
   // Guests Count
+/* A hook that allows us to use state in a functional component. */
   const [guestCount, setGuestCount] = useState(0);
   const [roomsCount, setRoomsCount] = useState(0);
 
+/**
+ * It takes a number and returns a string with the number formatted as a currency
+ * @returns the number formatted as a currency.
+ */
   function currencyFormat(num) {
     let format = new Intl.NumberFormat("en-US").format(num);
     return format;
   }
 
+  useEffect(() => {
+/* Getting the initial search from the local storage and setting the guest count. */
+    const initialSearch = JSON.parse(localStorage.getItem("initialSearch"));
+    /* setDate(initialSearch.date) */
+    console.log(initialSearch.date)
+    setGuestCount(initialSearch.contador)
+  },[])
+
+
   return (
     <Box sx={{}}>
       <Grid container spacing={3} sx={{ mt: 2 }}>
-        {/* <Grid item xs={12}>
-        <Typography
-          variant="h6"
-          sx={{
-            fontWeight: "600",
-            textTransform: "uppercase",
-          }}
-        >
-          Extra Service
-        </Typography>
-      </Grid> */}
+
         <Grid item xs={12} md={6}>
           <TextField
             fullWidth
@@ -73,9 +81,6 @@ const BookingForm = () => {
             onClick={handleClick}
             InputProps={{
               readOnly: true,
-              /* inputProps: {
-                    style: { textAlign: "center" },
-                  }, */
             }}
           />
           {/* Popper MUI */}
@@ -106,13 +111,10 @@ const BookingForm = () => {
             label="CheckOut Date"
             id="outlined-basic"
             variant="outlined"
-            value={`${format(date[0].endDate, "dd/MM/yyyy")}`}
+            value={`${format(date[0].endDate, "dd / MMMM / yyyy")}`}
             onClick={handleClick}
             InputProps={{
               readOnly: true,
-              /* inputProps: {
-                    style: { textAlign: "center" },
-                  }, */
             }}
           />
         </Grid>

@@ -10,35 +10,21 @@ import {
   Button,
 } from "@mui/material";
 import { MdPersonOutline, MdAcUnit, MdBed } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 const color = "#0f97aa";
-const Example = styled(Box)(({ theme }) => ({}));
 
-const RoomSearch = () => {
+
+
+const RoomSearch = (props) => {
+
+ const navigate = useNavigate()
+
+
   return (
-    <Box
-      sx={{
-        backgroundColor: "#f9f9f9",
-        padding: { xs: "50px 0", md: "80px 0px" },
-        width: "100%",
-        height: "100%",
-      }}
-    >
+    <Box    >
       <Container>
         <Grid container>
-          <Grid item xs={12} align="center">
-            <Typography
-              variant="h4"
-              sx={{
-                fontSize: "36px",
-                fontWeight: "500",
-                textTransform: "uppercase",
-              }}
-            >
-              Discover Our Rooms
-            </Typography>
-          </Grid>
-
           {/* Room Search */}
           <Grid item xs={12} md={12}>
             <Box
@@ -56,7 +42,7 @@ const RoomSearch = () => {
                       width: "100%",
                       height: "450px",
                       background:
-                        'url("https://res.cloudinary.com/cardiadev/image/upload/v1651991273/hors/rooms/room_junior_01_n3bbl0.jpg")',
+                      `url(${props.imageCategory})`,
                       backgroundSize: "cover",
                       backgroundRepeat: "no-repeat",
                       backgroundPosition: "center",
@@ -84,7 +70,7 @@ const RoomSearch = () => {
                           fontWeight: "600",
                         }}
                       >
-                        Junior Suite
+                        {props.name}
                       </Typography>
                     </Grid>
 
@@ -92,7 +78,7 @@ const RoomSearch = () => {
                       <Stack direction="row" spacing={2}>
                         <Chip
                           icon={<MdPersonOutline size={24} color={color} />}
-                          label="With Icon"
+                          label={props.capacity}
                         />
                         <Chip
                           icon={<MdAcUnit size={24} color={color} />}
@@ -117,15 +103,13 @@ const RoomSearch = () => {
                         }}
                       >
                         <Typography variant="body1" sx={{ color: "#666" }}>
-                          Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Modi, qui sequi officia numquam nisi quia animi
-                          amet deleniti laborum reiciendis at hic maiores?
-                          Laborum perferendis debitis est natus pariatur
-                          repellat.
+                          {props.description}
                         </Typography>
                       </Grid>
 
                       <Box sx={{}}>
+
+
                         <Button
                           variant="contained"
                           color="primary"
@@ -135,11 +119,14 @@ const RoomSearch = () => {
                             height: "50px",
                             fontSize: "18px",
                           }}
-                          href="rooms/juniorsuite"
-
+                          onClick={() => navigate("/rooms/details",{state  : props.category})}
                         >
                           Book Now
                         </Button>
+
+
+
+
                       </Box>
 
                       <Box
@@ -164,7 +151,7 @@ const RoomSearch = () => {
                             color: "#0f97aa",
                           }}
                         >
-                          $300
+                          ${props.price}
                         </Typography>
                         <Typography
                           variant="h6"

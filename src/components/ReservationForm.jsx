@@ -17,7 +17,7 @@ import "react-date-range/dist/theme/default.css"; // theme css file
 
 import "./styles.css";
 
-
+import { useNavigate } from "react-router-dom";
 
 
 const GuestsBox = styled(TextField)(() => ({
@@ -35,7 +35,11 @@ const GuestsBox = styled(TextField)(() => ({
 
 
 export const ReservationForm = () => {
-  //
+
+  const navigate = useNavigate()
+
+  // Guests Count
+  const [contador, setContador] = useState(0);
   const [openDate, setOpenDate] = useState(false);
   const [date, setDate] = useState([
     {
@@ -56,8 +60,6 @@ export const ReservationForm = () => {
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
 
-  // Guests Count
-  const [contador, setContador] = useState(0);
 
   //funcion para limitar contador a 0 y 100
   const handleContadorNegative = () => {
@@ -207,7 +209,15 @@ export const ReservationForm = () => {
                 variant="contained"
                 color="primary"
                 sx={{ height: "55px" }}
-                href="/rooms"
+                onClick={()=>{
+                  navigate("/rooms")
+                  const initialSearch = {
+                    contador,
+                    date,
+                  }
+                  localStorage.setItem("initialSearch", JSON.stringify(initialSearch))
+                }}
+                
               >
                 Search
               </Button>

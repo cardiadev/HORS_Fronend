@@ -10,17 +10,22 @@ import RoomInfo from "../components/RoomInfo";
 import Amenities from "../components/Amenities";
 import BookFormContainer from "../components/BookFormContainer";
 
+import { useLocation} from "react-router-dom";
+
 const JuniorSuite = () => {
+
+  const state = useLocation()
+  console.log(state);
   return (
     <Box>
       <Menu />
       <HeaderBanner
-        somePic={
-          "https://res.cloudinary.com/cardiadev/image/upload/v1651991273/hors/rooms/room_junior_01_n3bbl0.jpg"
-        }
-        title={"Junior Suite"}
+        somePic=
+          {state.state.Photos[0].url}
+        
+        title={state.state.name}
       />
-      <RoomGallery />
+      <RoomGallery gallery={state.state.Photos} />
       {/* <RoomSearch/> */}
       <Container>
 
@@ -30,7 +35,7 @@ const JuniorSuite = () => {
       mb={6}
       >
         <Grid item xs={12} md={6}>
-          <RoomInfo />
+          <RoomInfo description={state.state.description} />
           <Amenities />
         </Grid>
         <Grid item xs={12} md={6}>
